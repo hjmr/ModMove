@@ -24,12 +24,14 @@ final class Mover {
             return
         }
 
+        /*
         let currentPid = NSRunningApplication.current.processIdentifier
         if let pid = window.pid(), pid != currentPid {
             NSRunningApplication(processIdentifier: pid)?.activate(options: .activateIgnoringOtherApps)
         }
+        */
 
-        window.bringToFront()
+        // window.bringToFront()
         if let lastPosition = self.lastMousePosition {
             let mouseDelta = CGPoint(x: lastPosition.x - point.x, y: lastPosition.y - point.y)
             handler(window, mouseDelta)
