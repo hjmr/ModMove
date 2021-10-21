@@ -17,12 +17,14 @@ final class Observer {
     }
 
     private func state(for flags: NSEvent.ModifierFlags) -> FlagState {
-        let hasMain = flags.contains(.control) && flags.contains(.option)
+        let hasControl = flags.contains(.control)
+        let hasOption = flags.contains(.option)
         let hasShift = flags.contains(.shift)
+        let hasCommand = flags.contains(.command)
 
-        if hasMain && hasShift {
+        if hasShift && hasOption {
             return .Resize
-        } else if hasMain {
+        } else if hasShift && hasCommand {
             return .Drag
         } else {
             return .Ignore
